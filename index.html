@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewadder</title>
+</head>
+<body>
+  
+
+
+<h1>Welcom to viewAdder</h1>
+<h2>just past link and choose frequncy ( how many time you want to redirect )</h2>
+<input id="in" type="text" placeholder="Enter Link">
+<button id="btn" onclick="exicute()">Run</button>
+
+
+
+
+    <script>
+    
+    async function exicute() {
+        var link = document.getElementById("in").value;
+        var frequncy = prompt("Enter frequncy");
+        while (frequncy == null || frequncy == "" || frequncy == 0) {
+            frequncy = prompt("Enter frequncy");
+        }
+
+        for (let i = 0; i < frequncy; i++) {
+            await openAndCloseWindow(link);
+        }
+    }
+
+    function openAndCloseWindow(link) {
+        return new Promise(resolve => {
+            let openedWindow = window.open(link);
+            setTimeout(() => {
+                openedWindow.close();
+                resolve();
+            }, 500);
+        });
+    }
+    </script>
+</body>
+</html>
